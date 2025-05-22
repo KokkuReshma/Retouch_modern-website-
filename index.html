@@ -10,6 +10,73 @@
     <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
     <!-- Font Awesome for icons (optional) -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <style>
+        /* Basic styles for the new section - MOVE THESE TO style.css */
+        .more-info-section {
+            background-color: #3b5998; /* Approximate blue from image */
+            color: #ffffff;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+        .more-info-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 500; /* Lighter than default h3 for a more modern look */
+        }
+        .site-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .info-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-column ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .info-column ul li .icon-placeholder { /* Simple text icon placeholder */
+            margin-right: 8px;
+            font-size: 1.1em; /* Adjust if using actual icons */
+        }
+        .info-column a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .info-column a:hover {
+            text-decoration: underline;
+        }
+        .services-column-container {
+            display: flex;
+            gap: 20px; /* Gap between the two service lists */
+        }
+        .services-column-container > ul {
+            flex: 1; /* Each list takes equal space */
+        }
+        .location-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start; /* Align icon to top for multi-line text */
+        }
+        .location-details p .icon-placeholder {
+             margin-right: 8px;
+             font-size: 1.1em;
+             margin-top: 2px; /* Slight adjustment for visual alignment */
+        }
+
+        /* For mobile, stack service columns if needed */
+        @media (max-width: 400px) { /* Adjust breakpoint as needed for service list stacking */
+            .services-column-container {
+                flex-direction: column;
+                gap: 0; /* Remove gap if stacking */
+            }
+             .services-column-container > ul {
+                margin-bottom: 10px; /* Add some space between stacked lists */
+            }
+        }
+    </style>
 </head>
 <body>
     <header id="main-header">
@@ -145,6 +212,58 @@
         </section>
     </main>
 
+    <!-- START: New More Info Section -->
+    <section id="more-info" class="more-info-section">
+        <div class="container site-info-grid">
+            <div class="info-column services-column">
+                <h3>Services</h3>
+                <div class="services-column-container">
+                    <ul>
+                        <li><span class="icon-placeholder">🐾</span> UX Design</li>
+                        <li><span class="icon-placeholder">🌱</span> Artificial Intelligence</li>
+                        <li><span class="icon-placeholder">⚙️</span> Digital Marketing</li>
+                        <li><span class="icon-placeholder">🤝</span> Customer Relationship Management</li>
+                        <li><span class="icon-placeholder">🌐</span> Web Development and Designing</li>
+                        <li><span class="icon-placeholder">☕</span> Java Development</li>
+                    </ul>
+                    <ul>
+                        <li><span class="icon-placeholder">●</span> .Net Development</li>
+                        <li><span class="icon-placeholder">🅿️</span> DevOps</li> <!-- Used P as a placeholder for PayPal-like icon -->
+                        <li><span class="icon-placeholder">🤖</span> Android Development</li>
+                        <li><span class="icon-placeholder">🅰️</span> Angular JS Development</li>
+                        <li><span class="icon-placeholder">🛠️</span> Technical Services</li>
+                        <li><span class="icon-placeholder">⚕️</span> Health Care Services</li>
+                        <li><span class="icon-placeholder">💡</span> Procurement Services</li>
+                        <li><span class="icon-placeholder">🏛️</span> Financial and Banking Services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-column links-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#"><span class="icon-placeholder">🏠</span> Home</a></li>
+                    <li><a href="#"><span class="icon-placeholder">💼</span> Work</a></li>
+                    <li><a href="#"><span class="icon-placeholder">👤</span> About Us</a></li>
+                    <li><a href="#"><span class="icon-placeholder">⚙️</span> Services</a></li>
+                    <li><a href="#"><span class="icon-placeholder">✈️</span> Career</a></li>
+                    <li><a href="#"><span class="icon-placeholder">📡</span> Latest Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="info-column location-column">
+                <h3>Location</h3>
+                <div class="location-details">
+                    <p><span class="icon-placeholder">📍</span> 46/4, Hosur Rd, Krishna Reddy Industrial Area, H.S, R Extension, Bengaluru, Karnataka 560068</p>
+                    <p><span class="icon-placeholder">📍</span> No.74, 3rd Cross, EPIP Zone, Export Promotion Industrial Park, whitefield, Bengaluru, Karnataka 560066</p>
+                    <p><a href="mailto:support@retouchitservices.com"><span class="icon-placeholder">✉️</span> support@retouchitservices.com</a></p>
+                    <p><a href="mailto:Info@retouchitservices.com"><span class="icon-placeholder">✉️</span> Info@retouchitservices.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: New More Info Section -->
+
     <footer id="main-footer">
         <div class="container">
             <p>© <span id="current-year"></span> Pro Retouch Studio. All Rights Reserved.</p>
@@ -155,4 +274,3 @@
     <script src="js/script.js" defer></script>
 </body>
 </html>
-
