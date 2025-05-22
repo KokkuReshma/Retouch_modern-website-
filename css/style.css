@@ -1,0 +1,488 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #007bff; /* A modern blue */
+    --secondary-color: #6c757d; /* A muted gray */
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --text-color: #333;
+    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --heading-font: 'Montserrat', sans-serif; /* Or another modern sans-serif */
+    --container-width: 1100px;
+    --header-height: 70px;
+}
+
+/* Basic Reset & Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* For smooth scrolling on internal links */
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    color: var(--dark-color);
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px; /* Padding for smaller screens */
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade of primary */
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+
+/* --- Header & Navigation --- */
+#main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky; /* Makes header stick to top */
+    top: 0;
+    z-index: 1000; /* Ensures it's above other content */
+    height: var(--header-height);
+}
+
+#main-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+/*
+#logo {
+    height: 50px;
+}
+*/
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+.logo-text:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active { /* We'll add 'active' class with JS later */
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg') no-repeat center center/cover;
+    /* Fallback background color if image doesn't load */
+    background-color: var(--dark-color);
+    color: #fff;
+    height: calc(100vh - var(--header-height)); /* Full viewport height minus header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px; /* Padding for content on small screens */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-content .btn {
+    margin: 0.5rem;
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.about-text {
+    flex: 1;
+}
+.about-image {
+    flex: 1;
+    max-width: 450px; /* Control image size */
+}
+.about-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Services Section --- */
+.services-section {
+    background-color: var(--light-color);
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+}
+.service-item {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.service-item img { /* If you add actual images */
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    max-height: 150px; /* Or adjust as needed */
+    object-fit: cover;
+    width: 100%;
+}
+.service-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Portfolio Section --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.portfolio-item img { /* If you add actual images */
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+/* Basic overlay effect (optional) */
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.3); /* Primary color with opacity */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.portfolio-item:hover::after {
+    opacity: 1;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background-color: var(--light-color);
+}
+.contact-form {
+    max-width: 700px;
+    margin: 30px auto 40px; /* Center form and add spacing */
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize */
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.contact-details {
+    text-align: center;
+    margin-top: 30px;
+}
+.contact-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* --- Footer --- */
+#main-footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 25px 0;
+}
+#main-footer p {
+    margin-bottom: 0;
+}
+#main-footer a {
+    color: var(--primary-color);
+}
+
+
+/* --- Responsive Design (Mobile First Approach is often better, but this works too) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px; /* Slightly less padding on smaller screens */
+    }
+
+    h1 { font-size: 2.2rem; }
+    .hero-content h1 { font-size: 2.5rem; } /* Specific hero h1 size for mobile */
+    h2 { font-size: 1.8rem; }
+
+    /* Mobile Navigation */
+    .nav-links {
+        display: none; /* Hide desktop nav links */
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height); /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding-bottom: 10px; /* Spacing at bottom of mobile menu */
+    }
+
+    .nav-links.active { /* This class will be toggled by JS */
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+        background-color: var(--light-color);
+    }
+    .nav-links a::after { /* Remove underline effect for mobile nav items */
+        display: none;
+    }
+
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* Hamburger Icon Animation (when 'active') */
+    .mobile-nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .mobile-nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+
+    .hero-section {
+        height: auto; /* Adjust height for content */
+        min-height: 80vh;
+        padding: 80px 20px; /* More vertical padding */
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+    .about-image {
+        margin-top: 30px;
+        max-width: 100%; /* Allow image to take full width if needed */
+    }
+
+    .services-grid, .portfolio-grid {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+    .btn { padding: 10px 20px; font-size: 0.9rem;}
+
+    .contact-form {
+        padding: 20px;
+    }
+}
+
+/* Utility for hiding elements visually but keeping them accessible for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
